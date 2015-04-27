@@ -14,7 +14,7 @@ module.exports = function( grunt ) {
 		watch: {		
 			css: {
 				files: [ 'src/sass/**/*' ],
-				tasks: [ 'compass:src', 'concat:css' ]
+				tasks: [ 'sass', 'concat:css' ]
 			},
 
 			js: {
@@ -23,24 +23,17 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		// Compass scss
-		compass: {
-			src: {
-				options: {
-					force: true,
-					config: 'config.rb'
-				}
-			},
-
-			dist: {
-				options: {
-					force: true,
-					config: 'config.rb',
-					outputStyle: 'compressed',
-					relativeAssets: true
-				}
-			}
-		},
+		//SASS para CSS
+	    sass: {
+	        options: {
+	            sourceMap: true
+	        },
+	        dist: {
+	            files: {
+	                'src/css/main.css': 'src/sass/main.scss'
+	            }
+	        }
+	    },
 
 		// Concateção dos arquivos CSS e JS
 		concat: {
