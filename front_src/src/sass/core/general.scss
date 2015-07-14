@@ -1,4 +1,4 @@
-@import "../base.scss";
+@import "../core/base.scss";
 
 *,*:before,*:after{
 	@include boxSizing;
@@ -9,16 +9,36 @@ html, body {
 }
 
 body {
-	background-color: #fff;
+	background-color: #DFDFDF;
 	font-family: $font;
 	font-size: $font-size-base;
+	color: darken($color-grey,20%);
+}
+
+main{
+	background-color: #000;
+}
+
+a{
+	text-decoration: none;
+}
+
+p{
+	font-size: $font-size;
 }
 
 img{
 	max-width: 100%;
 }
 
+
 .wrap{
-	@include center();
+	@include cf;
+	@include center(1280px);
+	padding: $padding-base;
 }
 
+.list{
+	@extend %ul;
+	@include cf;
+}
