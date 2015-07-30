@@ -4,7 +4,7 @@ module.exports = function( grunt ) {
 	// Definição dos arquivos js
 	var filesJS = ['bower_components/modernizr/modernizr.js', 'bower_components/owl-carousel/owl-carousel/owl.carousel.js','src/js/**/*'];
 	// Definição dos arquivos css
-	var fileCSS = ['bower_components/normalize-css/normalize.css', 'bower_components/owl-carousel/owl-carousel/owl.carousel.css', 'src/css/main.css'];
+	var fileCSS = ['bower_components/normalize-css/normalize.css', 'bower_components/owl-carousel/owl-carousel/owl.carousel.css',  'src/css/sprite/sprite.css','src/css/main.css'];
 
 	// Load all tasks
 	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
@@ -124,6 +124,23 @@ module.exports = function( grunt ) {
             }
         },
 
+    	sprity: {
+			options: {
+			'cssPath': '../images',
+			'processor': 'css',
+			'orientation': 'vertical',
+			'margin': 4,
+			'prefix':'sprite'
+			},
+			sprite: {
+				options: {
+				  'style': '../css/sprite/sprite.css'
+				},
+				src: 'src/images/sprite/*',
+				dest: 'src/images/sprite',
+			}
+	    },
+
         devUpdate: {
 	        main: {
 	            options: {
@@ -143,7 +160,8 @@ module.exports = function( grunt ) {
 
 	// registrando tarefa default
 	grunt.registerTask( 'default', [ 'browserSync', 'watch' ] );
-	grunt.registerTask( 'img', [ 'imagemin' ] );
+	grunt.registerTask( 'img', [ 'sprity', 'imagemin' ] );
+	grunt.registerTask( 'sprite', [ 'sprity' ] );
 	grunt.registerTask( 'css', [ 'cssmin' ] );
 	grunt.registerTask( 'mq', [ 'cmq' ] );
 	grunt.registerTask( 'update', [ 'devUpdate' ] );
