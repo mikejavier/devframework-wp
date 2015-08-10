@@ -7,7 +7,9 @@ module.exports = function( grunt ) {
 	var fileCSS = ['bower_components/normalize-css/normalize.css', 'bower_components/owl-carousel/owl-carousel/owl.carousel.css',  'src/css/sprite/sprite.css','src/css/main.css'];
 
 	// Load all tasks
-	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+	require('time-grunt')(grunt);
+	require('jit-grunt')(grunt);
+	//require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
 	grunt.initConfig({
 		// Watch
